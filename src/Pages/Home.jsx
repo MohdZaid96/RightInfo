@@ -6,6 +6,8 @@ import * as XLSX from "xlsx";
 import {Bar} from "react-chartjs-2"
 import Chart from 'chart.js/auto';
 import BarChart from "../Components/BarChart";
+import PieChart from "../Components/PieChart";
+import Table from "../Components/Table";
 
 const Home = () => {
   const [items,setItems]=useState([]);
@@ -132,14 +134,16 @@ const Home = () => {
         </div>
       </div>
       <div className="">
-          <div className="bar">
-              <BarChart dataset={items} />
-             
+          <div className="bar" style={{margin: '32px',
+            width: "93%",alignItems:"center"}}>
+              <BarChart dataset={items} />             
           </div>
-          <div>
-            <div className="pie">
+          <div style={{display:"flex",flexDirection:'row'}}>
+            <div className="pie" >
+                <PieChart dataset={items} />
             </div>
             <div className="table">
+              <Table dataset={items}/>
             </div>
           </div>
       </div>

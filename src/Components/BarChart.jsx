@@ -1,23 +1,110 @@
-import React, { useState } from "react";
-import {Bar} from "react-chartjs-2";
-import Chart from 'chart.js/auto';
+import React from 'react';
+import { Chart } from 'react-chartjs-2';
+
+
+
 
 const BarChart = ({dataset}) => {
-    var emission=`Emissions(in CO2e);
-    `
-    const [dataEX,setDataEX]=useState({
-        labels: ['2022',"2023"],
-        datasets: [{
-          label: 'companies',
-          data: dataset?.map((ele)=> ele.Emissions),
-        }],
-      });
+  
+const uniqueMonths = Array.from(new Set(dataset.map(entry => entry['Month '])));
+const labels = uniqueMonths.map(month => month.substring(0, 3));
 
+const uniqueSuppliers = Array.from(new Set(dataset.map(entry => entry['Supplier '])));
+const uniqueYears = Array.from(new Set(dataset.map(entry => entry['Year '])));
 
-  return (
-    <Bar data={dataEX}
-              />
-  )
+const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(255, 205, 86)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)','rgb(182, 95, 192)','rgb(97, 102, 255)'];
+const colorMap = {};
+
+function generateColors(count) {
+  const colors = [];
+  for (let i = 0; i < count; i++) {
+    const hue = (360 / count) * i;
+    colors.push(`hsl(${hue}, 70%, 50%)`);
+  }
+  return colors;
 }
 
-export default BarChart
+
+uniqueSuppliers.forEach((supplier, index) => {
+  colorMap[supplier] = colors[index % generateColors(labels.length)];
+});
+
+const datasets = [
+  {
+    label: 'Emissions 2022',
+    backgroundColor: 'rgb(75, 192, 192)',
+    data: uniqueMonths.map(month => dataset.find(e => e['Month '] === month && e['Year '] === 2022)?.['Emissions(in CO2e)'] || 0),
+  },
+  {
+    label: 'Emissions 2023',
+    backgroundColor: 'rgb(255, 99, 132)',
+    data: uniqueMonths.map(month => dataset.find(e => e['Month '] === month && e['Year '] === 2023)?.['Emissions(in CO2e)'] || 0),
+  },
+  {
+    label: 'R/E 2022',
+    borderColor: 'rgb(255, 205, 86)',
+    data: uniqueMonths.map(month => dataset.find(e => e['Month '] === month && e['Year '] === 2022)?.['R/E'] || 0),
+    type: 'line',
+    yAxisID: 'R/E',
+  },
+  {
+    label: 'R/E 2023',
+    borderColor: 'rgb(54, 162, 235)',
+    data: uniqueMonths.map(month => dataset.find(e => e['Month '] === month && e['Year '] === 2023)?.['R/E'] || 0),
+    type: 'line',
+    yAxisID: 'R/E',
+  },
+];
+
+const data = {
+  labels,
+  datasets,
+};
+
+const options = {
+  scales: {
+    y: [
+      {
+        id: 'Emissions',
+        type: 'linear',
+        position: 'left',
+        beginAtZero: true,
+        max: 9000,
+        stepSize: 1000,
+        title: {
+          display: true,
+          text: 'Total Emissions (in CO2e)',
+        },
+      },
+      {
+        id: 'R/E',
+        type: 'linear',
+        position: 'right',
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Revenue to Emissions Ratio (R/E)',
+        },
+      },
+    ],
+  },
+  plugins: {
+    legend: {
+      onClick: (e, legendItem, legend) => {
+        const index = legendItem.datasetIndex;
+        const chart = legend.chart;
+        chart.getDatasetMeta(index).hidden = !chart.getDatasetMeta(index).hidden;
+        chart.update();
+      },
+    },
+  },
+};
+  return (
+    <div>
+      <h2>Monthly Emissions Bar Chart</h2>
+      <Chart type="bar" data={data} options={options} />
+    </div>
+  );
+};
+
+export default BarChart;
