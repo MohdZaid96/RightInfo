@@ -32,7 +32,7 @@ const Table = ({ dataset }) => {
   return (
     <div>
       <h2>Supplier Wise Data Table</h2>
-      <table border="1">
+      <table  className='table'>
         <thead>
           <tr>
             <th>Supplier</th>

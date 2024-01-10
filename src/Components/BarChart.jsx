@@ -12,11 +12,11 @@ const labels = uniqueMonths.map(month => month.substring(0, 3));
 const uniqueSuppliers = Array.from(new Set(dataset.map(entry => entry['Supplier '])));
 const uniqueYears = Array.from(new Set(dataset.map(entry => entry['Year '])));
 
-const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(255, 205, 86)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)','rgb(182, 95, 192)','rgb(97, 102, 255)'];
 const colorMap = {};
+const colors = [];
 
 function generateColors(count) {
-  const colors = [];
+  
   for (let i = 0; i < count; i++) {
     const hue = (360 / count) * i;
     colors.push(`hsl(${hue}, 70%, 50%)`);
@@ -100,7 +100,7 @@ const options = {
   },
 };
   return (
-    <div>
+    <div className='barDiv'>
       <h2>Monthly Emissions Bar Chart</h2>
       <Chart type="bar" data={data} options={options} />
     </div>

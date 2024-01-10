@@ -1,0 +1,50 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    width: 100%;
+}
+.sidebar{
+   
+    background-color: #000;
+    color: white;
+    width: "20%";
+    height:'100vh';
+}
+
+.bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.leftsideblock{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.pieTable{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    gap: 20px;
+    width: 100%;
+    margin: auto;
+}
+.pie{
+    display: flex;
+    justify-content: center;
+    /* width: 40%; */
+}
+.tableblock{
+    display: flex;
+    justify-content: center;
+    /* width: 40%; */
+}
+
+.barDiv{
+    width: 100%;
+}

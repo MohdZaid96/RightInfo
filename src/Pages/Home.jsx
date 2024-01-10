@@ -8,6 +8,7 @@ import Chart from 'chart.js/auto';
 import BarChart from "../Components/BarChart";
 import PieChart from "../Components/PieChart";
 import Table from "../Components/Table";
+import "./Home.css"
 
 const Home = () => {
   const [items,setItems]=useState([]);
@@ -39,33 +40,30 @@ const Home = () => {
   }, []);
 
     return (
-    <div className="main" style={{display:"flex",flexDirection:"row"}} >
+    <div className="main"  >
       <div
         className="sidebar"
-        /*style={{ width: "15.55%", backgroundColor: "#181818" }}*/
-        style={{ width: "15.55%", backgroundColor: "#181818" ,height:'100vh'}}
       >
-        <h1 style={{padding:"5px", color: "white" ,fontSize:'20px'}}>RightInfo</h1>
+        <h1>RightInfo</h1>
         <div
-          style={{
-            height: "183px",
-            //padding: '4.9px',
-            border: "1px solid #2C2C2C",
-            color: "#2C2C2C",
-            display: 'grid'
+          // style={{
+          //   height: "183px",
+          //   padding: '4.9px',
+          //   border: "1px solid #2C2C2C",
+          //   color: "#2C2C2C",
+          //   display: 'grid'
 
-          }}
+          // }}
         >
           DATA-IN
           <div class="dropdown">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              class="btn dropdown-toggle text-white"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              style={{backgroundColor:"#181818",border:'none'}}
             >
-            <img src={energy} alt="Example" style={{width: '33px'}}/>Energy
+            <img src={energy} alt="Example" style={{width: '33px'}} />Energy
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -87,14 +85,14 @@ const Home = () => {
           </div>
           <div class="dropdown">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              class="btn dropdown-toggle text-white"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              style={{backgroundColor:"#181818",border:'none'}}
+              
 
             >
-            <img src={water} alt="Example" style={{width: '23px'}}/> Dropdown button
+            <img src={water} alt="Example" style={{width: '33px'}}/> Dropdown button
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -116,12 +114,7 @@ const Home = () => {
           </div>
         </div>
         <div
-          style={{
-            height: "183px",
-            border: "1px solid #2C2C2C",
-            color: "#2C2C2C",
-            display: 'grid'
-          }}
+         
         >
           ANALYZE
           <p style={{
@@ -133,16 +126,15 @@ const Home = () => {
           }}><img src={del} alt="Example" style={{width: '23px',marginRight:'5px'}}/>Waste</p> 
         </div>
       </div>
-      <div className="">
-          <div className="bar" style={{margin: '32px',
-            width: "93%",alignItems:"center"}}>
+      <div className="leftsideblock">
+          <div className="bar">
               <BarChart dataset={items} />             
           </div>
-          <div style={{display:"flex",flexDirection:'row'}}>
+          <div className="pieTable">
             <div className="pie" >
                 <PieChart dataset={items} />
             </div>
-            <div className="table">
+            <div className="tableblock">
               <Table dataset={items}/>
             </div>
           </div>
