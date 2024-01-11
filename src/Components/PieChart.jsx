@@ -42,7 +42,7 @@ const options = {
       
   return (
     <div>
-    <h2>Emissions by Companies Pie Chart</h2>
+    <h5>Emissions Company Wise</h5>
     <Pie data={pieData} options={options} />
   </div>
   )

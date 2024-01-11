@@ -1,33 +1,59 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../Data/Logo.png";
+import profile from "../Data/profile.png";
+import bell from "../Data/bell.png";
+import group from "../Data/group.png";
+
 
 const Navbar = () => {
-
   return (
-    <div className='navbar' style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width: '100%',height: '73px',padding: '13px, 10px, 13px, 20px',
-    borderRadius : '45px',
-    gap: '5px'
-    }}>
-        <div style={{width:"17%",backgroundColor:'#181818'}}>
-            <Link to="/" style={{padding:'15px',gap:'10px',textDecoration:'none',color:'white'}}>RightInfo</Link>
+    <div className="navbar" >
+      <div className="firstNav">
+        <img src={Logo} alt="Logo" />
+      </div>
+      
+        <div className="midNav">
+          <img src={group} alt="Group Icon"/>
+          <h5>Category-1</h5>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:"90%",padding:'15px',gap:'10px',alignItems:'center'}}>
-        <div >
-            <h1>Category-1</h1>
+        <div
+          className="lastNav"
+        >
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle text-white"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img src={profile} alt="profile" style={{ width: "33px" }} />
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">
+                  Action
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  Another action
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  Something else here
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="navbell">
+          <img src={bell} alt="Notification" />
+          </div>
         </div>
-        <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:"15%",padding:'15px',gap:'10px'}}>
-            <p>Name</p>
-            <button style={{backgroundColor: '#7ccbf1',
-                border: 'none',
-                borderRadius: '13px',
-                width: '67px'
-            }}>Logout</button>
-        </div>
-        </div>
-
+      
     </div>
+  );
+};
 
-  )
-}
-
-export default Navbar
+export default Navbar;

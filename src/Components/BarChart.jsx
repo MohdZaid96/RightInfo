@@ -101,7 +101,7 @@ const options = {
 };
   return (
     <div className='barDiv'>
-      <h2>Monthly Emissions Bar Chart</h2>
+      <h5>Emissions Bar Chart</h5>
       <Chart type="bar" data={data} options={options} />
     </div>
   );

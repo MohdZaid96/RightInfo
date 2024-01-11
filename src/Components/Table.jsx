@@ -31,7 +31,7 @@ const Table = ({ dataset }) => {
 
   return (
     <div>
-      <h2>Supplier Wise Data Table</h2>
+      <h5>Supplier Wise Data</h5>
       <table  className='table'>
         <thead>
           <tr>
