@@ -260,4 +260,47 @@ gap: 5px;
   }
 
   
-  
+  /* Mobile View */
+@media only screen and (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .barDiv,
+    .pie,
+    .tableblock {
+        width: 100%;
+    }
+
+    .pieTable {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        width: 90%;
+    }
+}
+
+/* Tablet View */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 30%;
+    }
+
+    .barDiv,
+    .pie,
+    .tableblock {
+        width: 70%;
+    }
+
+    .pieTable {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        width: 80%;
+    }
+}
